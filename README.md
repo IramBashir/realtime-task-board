@@ -7,7 +7,6 @@ A collaborative Trello-style board where multiple users can create, edit, delete
 
 -  Real-time updates via **Socket.io**
 -  Drag & drop **cards between columns**
--  Drag & drop **columns to reorder**
 -  Add, Edit, Delete cards
 -  Optimistic UI updates with rollback on failure
 -  File-based persistent storage (`board.json`)
