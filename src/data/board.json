@@ -3,17 +3,37 @@
     {
       "title": "To Do",
       "cards": [
-        { "text": "Set up project" },
-        { "text": "Add socket connection" }
+        {
+          "id": "0a7f93a5-11c7-448d-a2b5-af22fee90c11",
+          "text": "my task 1"
+        },
+        {
+          "id": "2aa32096-a132-42e6-a173-f96011eee680",
+          "text": "def"
+        }
       ]
     },
     {
       "title": "In Progress",
-      "cards": []
+      "cards": [
+        {
+          "id": "6bf614dc-3220-4955-86f2-aeb2498c5bdb",
+          "text": "hey"
+        },
+        {
+          "id": "9580aa4a-90bc-43b1-9e31-f9b231890756",
+          "text": "hey2"
+        }
+      ]
     },
     {
       "title": "Done",
-      "cards": []
+      "cards": [
+        {
+          "id": "e4902ae2-db99-48fc-ad71-66dbef290372",
+          "text": "raere"
+        }
+      ]
     }
   ]
 }

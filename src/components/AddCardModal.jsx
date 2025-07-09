@@ -1,20 +1,22 @@
 // components/AddCardModal.jsx
 import { useState } from 'react';
-import { useBoard } from '../context/BoardContext';
-
-const AddCardModal = ({ closeModal, columnIndex }) => {
+import { v4 as uuidv4 } from 'uuid';
+const AddCardModal = ({ closeModal, columnIndex, onAddCard }) => {
   const [text, setText] = useState('');
-  const { board, setBoard } = useBoard();
 
   const handleAdd = () => {
     if (!text.trim()) return;
 
-    const updatedBoard = { ...board };
-    updatedBoard.columns[columnIndex].cards.push({ text });
+    const newCard = {
+      id: uuidv4(),      //  add a unique ID
+      text: text.trim(), //  cleaned-up text
+    };
 
-    setBoard(updatedBoard); // optimistic update
+    onAddCard(columnIndex, newCard); //  pass the full card object with id
+    console.log("In add card modal:", newCard);
     closeModal();
   };
+
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-40 flex justify-center items-center z-50">

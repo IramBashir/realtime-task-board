@@ -7,7 +7,7 @@ let boardState = {
   columns: [],
 };
 
-const filePath = path.resolve('./data/board.json');
+const filePath = path.resolve('./src/data/board.json');
 
 // Load from file on first request
 if (fs.existsSync(filePath)) {
