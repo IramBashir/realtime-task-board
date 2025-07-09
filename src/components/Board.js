@@ -19,7 +19,7 @@ const Board = ({ columns, onMoveCard, onEditCard, onDeleteCard, onAddCard  }) =>
       const reordered = [...columns];
       const [moved] = reordered.splice(source.index, 1);
       reordered.splice(destination.index, 0, moved);
-      onMoveCard({ columns: reordered }); // reusing onMoveCard for now
+      onMoveCard({ columns: reordered }); 
       return;
     }
 
@@ -28,9 +28,6 @@ const Board = ({ columns, onMoveCard, onEditCard, onDeleteCard, onAddCard  }) =>
       const newColumns = [...columns];
       const sourceColIndex = columns.findIndex(col => col.id === source.droppableId);
       const destColIndex = columns.findIndex(col => col.id === destination.droppableId);
-
-      // const sourceColIndex = parseInt(source.droppableId);
-      // const destColIndex = parseInt(destination.droppableId);
 
       const sourceCol = {
         ...newColumns[sourceColIndex],
@@ -71,22 +68,16 @@ const Board = ({ columns, onMoveCard, onEditCard, onDeleteCard, onAddCard  }) =>
                   <div
                     ref={dragProvided.innerRef}
                     {...dragProvided.draggableProps}
-                    {...dragProvided.dragHandleProps}
+                    className="flex-shrink-0" // helps prevent weird wrapping
                   >
-                    <Droppable droppableId={column.id} type="card">
-                      {(dropProvided) => (
-                        <Column
-                          column={column}
-                          columnIndex={index}
-                          onEditCard={onEditCard}
-                          onDeleteCard={onDeleteCard}
-                          onAddCard={onAddCard}
-                          innerRef={dropProvided.innerRef}
-                          droppableProps={dropProvided.droppableProps}
-                          placeholder={dropProvided.placeholder}
-                        />
-                      )}
-                    </Droppable>
+                    <Column
+                      column={column}
+                      columnIndex={index}
+                      onEditCard={onEditCard}
+                      onDeleteCard={onDeleteCard}
+                      onAddCard={onAddCard}
+                      dragHandleProps={dragProvided.dragHandleProps}
+                    />
                   </div>
                 )}
               </Draggable>

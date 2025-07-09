@@ -8,7 +8,6 @@ const Card = ({ card, cardIndex, onEditCard, onDeleteCard }) => {
 
   const handleSave = () => {
     onEditCard(cardIndex, newText);
-    console.log("saving card: ", cardIndex, newText);
     setIsEditing(false);
   };
 
@@ -50,7 +49,6 @@ const Card = ({ card, cardIndex, onEditCard, onDeleteCard }) => {
               value={newText}
               onChange={(e) => {
                 setNewText(e.target.value)
-                console.log("on change card: ",e.target.value);
               }}
               className="w-full p-2 border rounded mb-3"
             />

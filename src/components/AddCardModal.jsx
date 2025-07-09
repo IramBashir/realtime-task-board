@@ -13,7 +13,6 @@ const AddCardModal = ({ closeModal, columnIndex, onAddCard }) => {
     };
 
     onAddCard(columnIndex, newCard); //  pass the full card object with id
-    console.log("In add card modal:", newCard);
     closeModal();
   };
 

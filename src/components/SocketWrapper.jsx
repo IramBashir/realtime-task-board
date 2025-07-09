@@ -7,12 +7,10 @@ import { v4 as uuidv4 } from 'uuid';
 
 const SocketWrapper = () => {
   const { board, setBoard } = useBoard();
-  console.log("Rendering board with state:", board);
   const ErrorFallback = () => <div>Board failed to load</div>;
 
  
   useEffect(() => {
-    console.log("Board state changed:", board);
   }, [board]);
   
   const deepEqual = (a, b) => {
@@ -45,7 +43,6 @@ const SocketWrapper = () => {
     try {
       sendUpdate(updatedBoard); // sync to server
     } catch (e) {
-      console.error("Socket error: rolling back", e);
       setBoard(prev); // rollback on failure
     }
   };
@@ -98,8 +95,6 @@ const SocketWrapper = () => {
 
   const handleAddCard = (columnIndex, newCard) => {
     const prev = board;
-    
-    console.log("card in Card.jsx:", newCard);
     const updatedColumns = [...board.columns];
     updatedColumns[columnIndex] = {
       ...updatedColumns[columnIndex],
@@ -107,10 +102,7 @@ const SocketWrapper = () => {
     };
 
     const newBoard = { columns: updatedColumns };
-    setBoard(newBoard); // optimistic
-
-    console.log("In Wrapper new card:", newCard);
-    console.log("In Wrapper new board:", newBoard);
+    setBoard(newBoard);
 
     try {
       sendUpdate(newBoard);
@@ -120,7 +112,8 @@ const SocketWrapper = () => {
     }
   };
 
-  return ( // Wrap your Board component:
+  return ( 
+    // Wraping  Board component
     <ErrorBoundary FallbackComponent={ErrorFallback}>
       <Board 
         columns={board.columns} 
