@@ -37,7 +37,8 @@ npm install
 
 
 ### 3. Create the data folder and a sample board.json file:
-On macOS/Linux:
+#### On macOS/Linux:
+
 mkdir -p data && cat > data/board.json <<EOL
 {
   "columns": [
@@ -66,7 +67,9 @@ mkdir -p data && cat > data/board.json <<EOL
   ]
 }
 EOL
-On Windows (PowerShell):
+
+#### On Windows (PowerShell):
+
 mkdir data
 @'
 {
@@ -96,7 +99,6 @@ mkdir data
   ]
 }
 '@ | Out-File -Encoding UTF8 -FilePath data/board.json
-
 
 
 ### 4. Start the dev server
