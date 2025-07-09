@@ -3,7 +3,7 @@
 A collaborative Trello-style board where multiple users can create, edit, delete, and move cards between columns, with real-time synchronization via WebSockets.
 
 
-## 🚀 Features
+## Features
 
 -  Real-time updates via **Socket.io**
 -  Drag & drop **cards between columns**
