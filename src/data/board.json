@@ -1,0 +1,19 @@
+{
+  "columns": [
+    {
+      "title": "To Do",
+      "cards": [
+        { "text": "Set up project" },
+        { "text": "Add socket connection" }
+      ]
+    },
+    {
+      "title": "In Progress",
+      "cards": []
+    },
+    {
+      "title": "Done",
+      "cards": []
+    }
+  ]
+}
