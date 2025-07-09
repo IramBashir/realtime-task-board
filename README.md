@@ -36,10 +36,67 @@ cd realtime-task-board
 npm install
 
 
-### 3. Create the data folder and board file
-
+### 3. Create the data folder and a sample board.json file:
+On macOS/Linux:
+mkdir -p data && cat > data/board.json <<EOL
+{
+  "columns": [
+    {
+      "id": "todo",
+      "title": "To Do",
+      "cards": [
+        { "id": "1", "text": "Set up project" },
+        { "id": "2", "text": "Add socket connection" }
+      ]
+    },
+    {
+      "id": "in-progress",
+      "title": "In Progress",
+      "cards": [
+        { "id": "3", "text": "Design column layout" }
+      ]
+    },
+    {
+      "id": "done",
+      "title": "Done",
+      "cards": [
+        { "id": "4", "text": "Install dependencies" }
+      ]
+    }
+  ]
+}
+EOL
+On Windows (PowerShell):
 mkdir data
-echo '{ "columns": [] }' > data/board.json
+@'
+{
+  "columns": [
+    {
+      "id": "todo",
+      "title": "To Do",
+      "cards": [
+        { "id": "1", "text": "Set up project" },
+        { "id": "2", "text": "Add socket connection" }
+      ]
+    },
+    {
+      "id": "in-progress",
+      "title": "In Progress",
+      "cards": [
+        { "id": "3", "text": "Design column layout" }
+      ]
+    },
+    {
+      "id": "done",
+      "title": "Done",
+      "cards": [
+        { "id": "4", "text": "Install dependencies" }
+      ]
+    }
+  ]
+}
+'@ | Out-File -Encoding UTF8 -FilePath data/board.json
+
 
 
 ### 4. Start the dev server
