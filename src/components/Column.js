@@ -3,13 +3,14 @@ import Card from './Card';
 import AddCardModal from './AddCardModal';
 import { useState } from 'react';
 
-const Column = ({ column, columnIndex, onEditCard, onDeleteCard, onAddCard, innerRef, droppableProps, placeholder,}) => {
+const Column = ({ column, columnIndex, onEditCard, onDeleteCard, onAddCard, innerRef, droppableProps, dragHandleProps, placeholder,}) => {
   const [showModal, setShowModal] = useState(false);
 
   return (
     <div className="bg-yellow-100 rounded-xl shadow-lg p-4 w-80 min-w-[20rem]"  
       ref={innerRef}
       {...droppableProps}
+      {...dragHandleProps}
     >
       <div className="flex justify-between items-center mb-3">
         <h2 className="text-lg font-semibold text-gray-800">{column.title}</h2>

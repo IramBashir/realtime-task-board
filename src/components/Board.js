@@ -23,27 +23,32 @@ const Board = ({ columns, onMoveCard, onEditCard, onDeleteCard, onAddCard  }) =>
       return;
     }
 
-    // Moving cards
-    const newColumns = [...columns];
-    const sourceColIndex = parseInt(source.droppableId);
-    const destColIndex = parseInt(destination.droppableId);
+    // Handle card move
+    if (type === "card") {
+      const newColumns = [...columns];
+      const sourceColIndex = columns.findIndex(col => col.id === source.droppableId);
+      const destColIndex = columns.findIndex(col => col.id === destination.droppableId);
 
-    const sourceCol = {
-      ...newColumns[sourceColIndex],
-      cards: [...newColumns[sourceColIndex].cards],
-    };
-    const destCol = {
-      ...newColumns[destColIndex],
-      cards: [...newColumns[destColIndex].cards],
-    };
+      // const sourceColIndex = parseInt(source.droppableId);
+      // const destColIndex = parseInt(destination.droppableId);
 
-    const [movedCard] = sourceCol.cards.splice(source.index, 1);
-    destCol.cards.splice(destination.index, 0, movedCard);
+      const sourceCol = {
+        ...newColumns[sourceColIndex],
+        cards: [...newColumns[sourceColIndex].cards],
+      };
+      const destCol = {
+        ...newColumns[destColIndex],
+        cards: [...newColumns[destColIndex].cards],
+      };
 
-    newColumns[sourceColIndex] = sourceCol;
-    newColumns[destColIndex] = destCol;
+      const [movedCard] = sourceCol.cards.splice(source.index, 1);
+      destCol.cards.splice(destination.index, 0, movedCard);
 
-    onMoveCard({ columns: newColumns });
+      newColumns[sourceColIndex] = sourceCol;
+      newColumns[destColIndex] = destCol;
+
+      onMoveCard({ columns: newColumns });
+    }
   };
 
 
@@ -56,19 +61,19 @@ const Board = ({ columns, onMoveCard, onEditCard, onDeleteCard, onAddCard  }) =>
       >
         {(provided) => (
           <div
-            className="flex gap-6  p-6 min-h-screen bg-gradient-to-br from-purple-200 to-pink-200 w-full"
+            className="flex gap-6 p-6 min-h-screen bg-gradient-to-br from-purple-200 to-pink-200 w-full"
             ref={provided.innerRef}
             {...provided.droppableProps}
           >
             {columns.map((column, index) => (
-              <Draggable draggableId={`column-${index}`} index={index} key={index}>
+              <Draggable draggableId={column.id} index={index} key={column.id}>
                 {(dragProvided) => (
                   <div
                     ref={dragProvided.innerRef}
                     {...dragProvided.draggableProps}
                     {...dragProvided.dragHandleProps}
                   >
-                    <Droppable droppableId={index.toString()} type="card">
+                    <Droppable droppableId={column.id} type="card">
                       {(dropProvided) => (
                         <Column
                           column={column}

@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import { v4 as uuidv4 } from 'uuid';
 
 const filePath = path.resolve('./data/board.json');
 
@@ -8,13 +9,20 @@ export const readBoardFromFile = () => {
     // fallback default board
     return {
       columns: [
-        { title: "To Do", cards: [] },
-        { title: "In Progress", cards: [] },
-        { title: "Done", cards: [] }
+        { id: uuidv4(), title: "To Do", cards: [] },
+        { id: uuidv4(), title: "In Progress", cards: [] },
+        { id: uuidv4(), title: "Done", cards: [] }
       ]
     };
   }
 
   const data = fs.readFileSync(filePath, 'utf-8');
-  return JSON.parse(data);
+    const parsed = JSON.parse(data);
+
+    // Add IDs if missing
+    parsed.columns = parsed.columns.map(col => ({
+      id: col.id || uuidv4(),
+      ...col,
+    }));
+  return parsed;
 };

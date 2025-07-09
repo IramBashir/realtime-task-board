@@ -1,39 +1,41 @@
 {
   "columns": [
     {
+      "id": "todo",
       "title": "To Do",
       "cards": [
         {
-          "id": "0a7f93a5-11c7-448d-a2b5-af22fee90c11",
-          "text": "my task 1"
-        },
-        {
-          "id": "2aa32096-a132-42e6-a173-f96011eee680",
-          "text": "def"
+          "id": "78a7389f-e0f5-4aa1-bec7-5c65a3f42de9",
+          "text": "task 101"
         }
       ]
     },
     {
+      "id": "In Progress",
       "title": "In Progress",
       "cards": [
         {
           "id": "6bf614dc-3220-4955-86f2-aeb2498c5bdb",
-          "text": "hey"
+          "text": "r1"
         },
         {
-          "id": "9580aa4a-90bc-43b1-9e31-f9b231890756",
-          "text": "hey2"
+          "id": "9121023c-b001-4013-9d14-8474a96d4fc6",
+          "text": "task 3"
+        },
+        {
+          "id": "b9c28be4-cd86-442a-9f20-40d8061211eb",
+          "text": "task 1"
+        },
+        {
+          "id": "e4902ae2-db99-48fc-ad71-66dbef290372",
+          "text": "hello"
         }
       ]
     },
     {
+      "id": "Done",
       "title": "Done",
-      "cards": [
-        {
-          "id": "e4902ae2-db99-48fc-ad71-66dbef290372",
-          "text": "raere"
-        }
-      ]
+      "cards": []
     }
   ]
 }
